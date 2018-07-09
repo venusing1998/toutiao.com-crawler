@@ -5,6 +5,7 @@ from multiprocessing.pool import Pool
 
 import requests
 
+# 参数
 GROUP_START = 1
 GROUP_END = 8
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
