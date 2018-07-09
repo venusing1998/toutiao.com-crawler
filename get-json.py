@@ -1,6 +1,10 @@
 import json
+import os
 
 import requests
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DIST_DIR = os.path.join(BASE_DIR, "dist")
 
 
 def get_html(offset, keyword):
@@ -26,7 +30,9 @@ def write_into_file(result):
     """写入文件
 
     """
-    with open("result.json", "w", encoding="utf-8") as f:
+    if not os.path.exists(DIST_DIR):
+        os.makedirs(DIST_DIR)
+    with open("dist/result.json", "w", encoding="utf-8") as f:
         f.write(result)
 
 

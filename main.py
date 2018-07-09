@@ -8,7 +8,7 @@ import requests
 GROUP_START = 1
 GROUP_END = 8
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-RESULT_DIR = os.path.join(BASE_DIR, "images")
+DIST_DIR = os.path.join(BASE_DIR, "dist")
 
 
 def get_html(offset, keyword):
@@ -49,14 +49,14 @@ def write_into_file(keyword, item):
     """写入文件
 
     """
-    if not os.path.exists(os.path.join(RESULT_DIR, keyword)):
-        os.makedirs(os.path.join(RESULT_DIR, keyword))
+    if not os.path.exists(os.path.join(DIST_DIR, keyword)):
+        os.makedirs(os.path.join(DIST_DIR, keyword))
     try:
         image_url = item.get("url")
         new_image_url = "http:" + image_url.replace("list", "large")
         response = requests.get(new_image_url)
         if response.status_code == 200:
-            file_path = "{0}/{1}/{2}.{3}".format(RESULT_DIR, keyword,
+            file_path = "{0}/{1}/{2}.{3}".format(DIST_DIR, keyword,
                                                  md5(response.content).hexdigest(), "jpg")
             if not os.path.exists(file_path):
                 with open(file_path, "wb") as f:
