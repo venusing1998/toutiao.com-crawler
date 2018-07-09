@@ -35,7 +35,7 @@ def main():
 
     """
     # 可以修改的测试值 offset=20
-    offset = 0
+    offset = 20
     keyword = "测试"
     result = get_html(offset, keyword)
     write_into_file(result)
