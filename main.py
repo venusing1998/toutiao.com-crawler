@@ -1,7 +1,7 @@
 import json
 import os
 from hashlib import md5
-from multiprocessing.pool import Pool
+from multiprocessing.dummy import Pool
 
 import requests
 
@@ -82,12 +82,8 @@ def main(offset):
 
 
 if __name__ == '__main__':
-    print('*'*20, 'begin', '*'*20, '\n')
-    print('author: Chris\n')
-    print('*'*47)
     pool = Pool()
     groups = ([x * 20 for x in range(GROUP_START-1, GROUP_END+1)])
     pool.map(main, groups)
     pool.close()
     pool.join()
-    print('*'*21, 'end', '*'*21, '\n')
