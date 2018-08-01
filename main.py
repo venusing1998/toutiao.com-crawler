@@ -24,9 +24,9 @@ def get_html(offset, keyword):
     try:
         response = requests.get(new_url, headers=headers)
         if response.status_code == 200:
-            html = response.json()
-            # result = json.dumps(html, indent=4)
-            return html
+            html = response.text
+            json_loads = json.loads(html)
+            return json_loads
     except requests.ConnectionError:
         return None
 
@@ -74,7 +74,7 @@ def main(offset):
 
     """
     # 这里修改keyword
-    keyword = "测试"
+    keyword = "泰妍"
     json = get_html(offset, keyword)
     for item in get_images(json):
         print("正在下载: http:", item["url"], "jpg", sep="")
