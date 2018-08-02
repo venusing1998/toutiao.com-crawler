@@ -24,9 +24,8 @@ def get_html(offset, keyword):
     try:
         response = requests.get(new_url, headers=headers)
         if response.status_code == 200:
-            html = response.text
-            json_loads = json.loads(html)
-            return json_loads
+            result = response.json()
+            return result
     except requests.ConnectionError:
         return None
 

@@ -19,9 +19,7 @@ def get_html(offset, keyword):
     try:
         response = requests.get(new_url, headers=headers)
         if response.status_code == 200:
-            html = response.text
-            json_loads = json.loads(html)
-            result = json.dumps(json_loads, indent=4)
+            result = json.dumps(response.json(), indent=4)
             return result
     except requests.ConnectionError:
         return None
