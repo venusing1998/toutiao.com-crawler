@@ -40,9 +40,9 @@ def get_images(json):
             image_list = item.get("image_list")
             if image_list:
                 for image in image_list:
-                    yield {
-                        "url": image.get("url"),
-                    }
+                    contents = {}
+                    contents["url"] = image.get("url")
+                    yield contents
 
 
 def write_into_file(keyword, item):
