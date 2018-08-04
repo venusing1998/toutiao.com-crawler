@@ -23,6 +23,7 @@ def get_html(offset, keyword):
             return result
     except requests.ConnectionError as e:
         print(e)
+        return None
 
 
 def write_into_file(result):
