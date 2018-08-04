@@ -28,6 +28,7 @@ def get_html(offset, keyword):
             return result
     except requests.ConnectionError as e:
         print(e)
+        return None
 
 
 def get_images(json):
