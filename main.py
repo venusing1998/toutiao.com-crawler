@@ -26,8 +26,8 @@ def get_html(offset, keyword):
         if response.status_code == 200:
             result = response.json()
             return result
-    except requests.ConnectionError:
-        return None
+    except requests.ConnectionError as e:
+        print(e)
 
 
 def get_images(json):

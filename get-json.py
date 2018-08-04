@@ -21,8 +21,8 @@ def get_html(offset, keyword):
         if response.status_code == 200:
             result = json.dumps(response.json(), indent=4, ensure_ascii=False)
             return result
-    except requests.ConnectionError:
-        return None
+    except requests.ConnectionError as e:
+        print(e)
 
 
 def write_into_file(result):
